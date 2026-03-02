@@ -110,6 +110,10 @@ With your Zwift data available as ioBroker states, you can create automations th
 - Increase fan speed proportionally to your power output
 - Activate the AC when calories burned pass a certain number
 
+**DIY hardware**
+- Use the altitude/gradient data to drive a DIY trainer rocker or tilt mechanism — build your own climbing simulator similar to the Wahoo KICKR CLIMB
+- Control a servo or linear actuator via ioBroker to tilt your bike frame in real time as the in-game gradient changes
+
 **Motivation and gamification**
 - Trigger a confetti machine or party lights when you complete a ride or hit a personal best
 - Send yourself a Telegram or Pushover notification with your ride summary when `isRiding` switches to `false`
