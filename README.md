@@ -10,100 +10,80 @@
 
 **Tests:** ![Test and Release](https://github.com/Flixhummel/ioBroker.zwift/workflows/Test%20and%20Release/badge.svg)
 
-## zwift adapter for ioBroker
+## Zwift Adapter for ioBroker
 
-your zwift live training data in iobroker
+Polls the Zwift API for live workout data and makes it available as ioBroker states. See your power, heart rate, cadence, speed, and more in real time while riding on Zwift.
 
-## Developer manual
-This section is intended for the developer. It can be deleted later.
+### Features
 
-### DISCLAIMER
+- Live rider data updated every 5 seconds (configurable)
+- Zwift profile information (name, weight, height, lifetime stats)
+- Connection status indicator (`info.connection`)
+- Automatic token refresh with re-authentication fallback
+- Encrypted credential storage
 
-Please make sure that you consider copyrights and trademarks when you use names or logos of a company and add a disclaimer to your README.
-You can check other adapters for examples or ask in the developer community. Using a name or logo of a company without permission may cause legal problems for you.
+### Configuration
 
-### Getting started
+| Setting | Description | Default |
+|---------|-------------|---------|
+| **Zwift Email** | Your Zwift account email | — |
+| **Zwift Password** | Your Zwift account password (stored encrypted) | — |
+| **Polling Interval** | How often to fetch data, in seconds (3–300) | 5 |
 
-You are almost done, only a few steps left:
-1. Create a new repository on GitHub with the name `ioBroker.zwift`
-1. Initialize the current folder as a new git repository:  
-	```bash
-	git init -b main
-	git add .
-	git commit -m "Initial commit"
-	```
-1. Link your local repository with the one on GitHub:  
-	```bash
-	git remote add origin https://github.com/Flixhummel/ioBroker.zwift
-	```
+### States
 
-1. Push all files to the GitHub repo:  
-	```bash
-	git push origin main
-	```
-1. Add a new secret under https://github.com/Flixhummel/ioBroker.zwift/settings/secrets. It must be named `AUTO_MERGE_TOKEN` and contain a personal access token with push access to the repository, e.g. yours. You can create a new token under https://github.com/settings/tokens.
+#### Rider Data (updated every poll cycle)
 
-1. Head over to [main.js](main.js) and start programming!
+| State | Unit | Description |
+|-------|------|-------------|
+| `isRiding` | — | `true` when actively in a Zwift world |
+| `power` | W | Current power output |
+| `heartrate` | bpm | Current heart rate |
+| `cadence` | rpm | Current cadence |
+| `speed` | km/h | Current speed |
+| `distance` | km | Distance covered in current activity |
+| `altitude` | m | Current altitude |
+| `climbing` | m | Total elevation gain in current activity |
+| `calories` | kcal | Calories burned |
+| `time` | s | Elapsed ride time |
+| `laps` | — | Laps completed |
+| `progress` | % | Route progress |
+| `sport` | — | Sport type (0 = cycling) |
+| `groupId` | — | Group/event ID (0 = no group) |
+| `x`, `y` | — | World position coordinates |
+| `heading` | — | Direction of travel |
+| `lean` | — | Lean angle |
+| `watchingRiderId` | — | ID of the rider being watched |
+| `rideOns` | — | Ride On count |
+| `courseId` | — | Current course ID |
+| `roadId` | — | Current road ID |
 
-### Best Practices
-We've collected some [best practices](https://github.com/ioBroker/ioBroker.repositories#development-and-coding-best-practices) regarding ioBroker development and coding in general. If you're new to ioBroker or Node.js, you should
-check them out. If you're already experienced, you should also take a look at them - you might learn something new :)
+#### Profile Data (fetched once on connect)
 
-### State Roles
-When creating state objects, it is important to use the correct role for the state. The role defines how the state should be interpreted by visualizations and other adapters. For a list of available roles and their meanings, please refer to the [state roles documentation](https://www.iobroker.net/#en/documentation/dev/stateroles.md).
+| State | Unit | Description |
+|-------|------|-------------|
+| `profile.id` | — | Zwift player ID |
+| `profile.firstName` | — | First name |
+| `profile.lastName` | — | Last name |
+| `profile.weight` | kg | Weight |
+| `profile.height` | cm | Height |
+| `profile.age` | — | Age |
+| `profile.male` | — | Gender indicator |
+| `profile.countryCode` | — | Country code |
+| `profile.totalDistance` | km | All-time distance |
+| `profile.totalDistanceClimbed` | m | All-time elevation gain |
+| `profile.totalTimeInMinutes` | min | All-time ride time |
+| `profile.totalWattHours` | Wh | All-time watt hours |
+| `profile.totalExperiencePoints` | — | Total XP |
+| `profile.achievementLevel` | — | Current level |
+| `profile.currentActivityId` | — | Current activity ID |
+| `profile.powerSource` | — | Power source type |
 
-**Important:** Do not invent your own custom role names. If you need a role that is not part of the official list, please contact the ioBroker developer community for guidance and discussion about adding new roles.
+### How It Works
 
-### Scripts in `package.json`
-Several npm scripts are predefined for your convenience. You can run them using `npm run <scriptname>`
-| Script name | Description |
-|-------------|-------------|
-| `test:js` | Executes the tests you defined in `*.test.js` files. |
-| `test:package` | Ensures your `package.json` and `io-package.json` are valid. |
-| `test:integration` | Tests the adapter startup with an actual instance of ioBroker. |
-| `test` | Performs a minimal test run on package files and your tests. |
-| `check` | Performs a type-check on your code (without compiling anything). |
-| `lint` | Runs `ESLint` to check your code for formatting errors and potential bugs. |
-| `translate` | Translates texts in your adapter to all required languages, see [`@iobroker/adapter-dev`](https://github.com/ioBroker/adapter-dev#manage-translations) for more details. |
-| `release` | Creates a new release, see [`@alcalzone/release-script`](https://github.com/AlCalzone/release-script#usage) for more details. |
+The adapter authenticates with the Zwift API using the same endpoint as the Zwift Companion app (`client_id=Zwift_Mobile_Link`). It polls the rider status via the game relay server, decodes the protobuf response, converts raw values to human-readable units, and updates the ioBroker state tree.
 
-### Writing tests
-When done right, testing code is invaluable, because it gives you the 
-confidence to change your code while knowing exactly if and when 
-something breaks. A good read on the topic of test-driven development 
-is https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92. 
-Although writing tests before the code might seem strange at first, but it has very 
-clear upsides.
-
-The template provides you with basic tests for the adapter startup and package files.
-It is recommended that you add your own tests into the mix.
-
-### Publishing the adapter
-Using GitHub Actions, you can enable automatic releases on npm whenever you push a new git tag that matches the form 
-`v<major>.<minor>.<patch>`. We **strongly recommend** that you do. The necessary steps are described in `.github/workflows/test-and-release.yml`.
-
-Since you installed the release script, you can create a new
-release simply by calling:
-```bash
-npm run release
-```
-Additional command line options for the release script are explained in the
-[release-script documentation](https://github.com/AlCalzone/release-script#command-line).
-
-To get your adapter released in ioBroker, please refer to the documentation 
-of [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories#requirements-for-adapter-to-get-added-to-the-latest-repository).
-
-### Test the adapter manually with dev-server
-Since you set up `dev-server`, you can use it to run, test and debug your adapter.
-
-You may start `dev-server` by calling from your dev directory:
-```bash
-dev-server watch
-```
-
-The ioBroker.admin interface will then be available at http://localhost:undefined/
-
-Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev-server#command-line) for more details.
+When you are not actively riding in Zwift, the adapter sets `isRiding` to `false` and continues polling without errors.
 
 ## Changelog
 <!--
