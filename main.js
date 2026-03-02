@@ -231,7 +231,7 @@ class Zwift extends utils.Adapter {
 		await this.setStateAsync("profile.firstName", { val: profile.firstName || "", ack: true });
 		await this.setStateAsync("profile.lastName", { val: profile.lastName || "", ack: true });
 		await this.setStateAsync("profile.weight", { val: Math.round((profile.weight || 0) / 100) / 10, ack: true });
-		await this.setStateAsync("profile.height", { val: profile.height || 0, ack: true });
+		await this.setStateAsync("profile.height", { val: Math.round((profile.height || 0) / 10), ack: true });
 		await this.setStateAsync("profile.age", { val: profile.age || 0, ack: true });
 		await this.setStateAsync("profile.male", { val: !!profile.male, ack: true });
 		await this.setStateAsync("profile.countryCode", { val: profile.countryCode || 0, ack: true });
