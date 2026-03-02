@@ -85,6 +85,42 @@ The adapter authenticates with the Zwift API using the same endpoint as the Zwif
 
 When you are not actively riding in Zwift, the adapter sets `isRiding` to `false` and continues polling without errors.
 
+### Smart Home Ideas
+
+With your Zwift data available as ioBroker states, you can create automations that bring your indoor training to life throughout your entire home.
+
+**Immersive lighting**
+- Change your LED strips or Hue lights based on heart rate zones — blue for recovery, green for endurance, yellow for tempo, red for threshold, flashing red for VO2max
+- Shift light color with your power output — the harder you push, the more intense the glow
+- Simulate altitude with light brightness — dim as you climb, brighten on descents
+- Flash your room lights when you receive a Ride On
+
+**Adaptive audio**
+- Automatically switch playlists based on your heart rate zone or power — chill beats for warmup, high BPM for intervals
+- Play a sound effect when you cross a lap or hit a calorie milestone
+- Announce your current stats via text-to-speech at regular intervals
+
+**Dashboards and displays**
+- Show live power, heart rate, speed, and cadence on a wall-mounted tablet or smart display
+- Display distance, climbing, and calories on an info panel in your pain cave
+- Build a VIS dashboard with your all-time stats from the profile data — total kilometers, total elevation, XP level
+
+**Climate control**
+- Turn on a smart fan when your heart rate exceeds a threshold and turn it off during rest intervals
+- Increase fan speed proportionally to your power output
+- Activate the AC when calories burned pass a certain number
+
+**Motivation and gamification**
+- Trigger a confetti machine or party lights when you complete a ride or hit a personal best
+- Send yourself a Telegram or Pushover notification with your ride summary when `isRiding` switches to `false`
+- Track your weekly distance on a seven-segment display or e-ink screen in the hallway
+- Light up a progress bar (LED strip) showing your route completion percentage
+
+**Family and household**
+- Set a "Do Not Disturb" indicator light outside your room whenever `isRiding` is `true`
+- Automatically mute your doorbell during a Zwift session
+- Send a message to your family's smart speaker: "Dad is Zwifting, estimated finish in X minutes"
+
 ## Changelog
 <!--
 	Placeholder for the next version (at the beginning of the line):
