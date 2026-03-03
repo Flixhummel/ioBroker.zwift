@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "zwift",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "news": {
+      "0.1.2": {
+        "en": "Set up trusted publishing via OIDC for GitHub Actions deploy",
+        "de": "Aufbau eines vertrauenswürdigen Publizierens über OIDC für GitHub Actions",
+        "ru": "Настройка надежной публикации через OIDC для развертывания GitHub Actions",
+        "pt": "Configure a publicação confiável através do OIDC para implantação de ações do GitHub",
+        "nl": "Vertrouwde publicatie instellen via OIDC voor GitHub Acties implementeren",
+        "fr": "Configurer la publication de confiance via OIDC pour le déploiement des actions GitHub",
+        "it": "Impostare l'editoria fidata tramite OIDC per GitHub Azioni schierare",
+        "es": "Configuración de publicaciones de confianza a través de OIDC para GitHub Actions implementados",
+        "pl": "Tworzenie zaufanych publikacji za pośrednictwem OIDC dla działań GitHub",
+        "uk": "Налаштуйте перевірену публікацію через OIDC для розгортання GitHub Actions",
+        "zh-cn": "为 GitHub 动作部署通过 OIDC 设置可信任的出版"
+      },
       "0.1.1": {
         "en": "Fix ESLint curly and prettier errors for CI",
         "de": "ESLint schwerfällige und vorbildliche Fehler für CI beheben",
