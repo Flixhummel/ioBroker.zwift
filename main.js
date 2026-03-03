@@ -35,8 +35,6 @@ class Zwift extends utils.Adapter {
 			const profile = await this.zwiftClient.getProfile();
 			await this.setStateAsync("info.connection", true, true);
 			this.log.info(`Connected to Zwift as player ${this.zwiftClient.playerId}`);
-			this.log.debug(`Profile keys: ${Object.keys(profile).join(", ")}`);
-			this.log.debug(`Profile JSON: ${JSON.stringify(profile)}`);
 			this.ftp = profile.ftp || 0;
 			if (this.ftp > 0) {
 				this.log.info(`FTP from Zwift profile: ${this.ftp} W`);
@@ -206,7 +204,6 @@ class Zwift extends utils.Adapter {
 	 * @param {Record<string, any>} status
 	 */
 	async updateStates(status) {
-		this.log.debug(`Raw values - distance: ${status.distance}, climbing: ${status.climbing}, progress: ${status.progress}, calories: ${status.calories}`);
 		// Core performance metrics
 		const power = status.power || 0;
 		await this.setStateAsync("power", { val: power, ack: true });
