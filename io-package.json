@@ -17,43 +17,17 @@
         "zh-cn": "为 GitHub 动作部署通过 OIDC 设置可信任的出版"
       },
       "0.1.1": {
-        "en": "Fix ESLint curly and prettier errors for CI",
-        "de": "ESLint schwerfällige und vorbildliche Fehler für CI beheben",
-        "ru": "Исправьте кудрявые и красивые ошибки ESLint для CI",
-        "pt": "Corrigir erros encaracolados e mais bonitos para o CI",
-        "nl": "Fix ESLint krullen en mooiere fouten voor CI",
-        "fr": "Correction des erreurs ESLint curly et prettier pour CI",
-        "it": "Risolvere gli errori ESLint e più precisi per CI",
-        "es": "Corregir errores de ESLint rizado y más alto para CI",
-        "pl": "Fix ESLint kręcone i ładniejsze błędy dla CI",
-        "uk": "Виправлення помилок ESLint для CI",
-        "zh-cn": "修复 CI 的 卷轴和更漂亮的错误"
-      },
-      "0.1.0": {
-        "en": "Poll Zwift API for live ride data (power, heartrate, cadence, speed, distance, altitude, climbing)\nZwift profile data (FTP, weight, height, level, total stats)\nPower zone calculation based on FTP (Coggan 6-zone model)\nConfigurable polling interval",
-        "de": "Poll Zwift API für Live-Ride-Daten (Strom, Herzfrequenz, Kadenz, Geschwindigkeit, Entfernung, Höhe, Klettern)\nZwift-Profildaten (FTP, Gewicht, Höhe, Ebene, Gesamtstaten)\nBerechnung der Stromzone basierend auf FTP (Coggan 6-Zonen-Modell)\nKonfigurierbares Abfrageintervall",
-        "ru": "Опрос Zwift API для данных о поездках в реальном времени (мощность, сердцебиение, каденция, скорость, расстояние, высота, подъем)\nДанные профиля Zwift (FTP, вес, рост, уровень, общая статистика)\nРасчет зоны электропитания на основе FTP (модель Coggan 6-zone)\nКонфигурируемый интервал опроса",
-        "pt": "Poll Zwift API para dados de passeio ao vivo (potência, ritmo cardíaco, cadência, velocidade, distância, altitude, escalada)\nDados do perfil Zwift (FTP, peso, altura, nível, estatísticas totais)\nCálculo da zona de potência com base no FTP (modelo Coggan 6-zona)\nIntervalo de votação configurável",
-        "nl": "Poll Zwift API voor live ritgegevens (kracht, hartslag, cadans, snelheid, afstand, hoogte, klimmen)\nZwift profielgegevens (FTP, gewicht, hoogte, niveau, totale statistieken)\nEnergiezoneberekening op basis van FTP (Coggan 6-zonemodel)\nConfigureerbare peilingsinterval",
-        "fr": "API Poll Zwift pour données de trajet en direct (puissance, rythme cardiaque, cadence, vitesse, distance, altitude, escalade)\nDonnées du profil Zwift (FTP, poids, taille, niveau, statistiques totales)\nCalcul de la zone de puissance basé sur FTP (modèle Coggan 6 zones)\nIntervalle de vote configurable",
-        "it": "Poll Zwift API per dati live ride (potere, frequenza cardiaca, cadenza, velocità, distanza, altitudine, arrampicata)\nDati del profilo Zwift (FTP, peso, altezza, livello, statistiche totali)\nCalcolo della zona di potenza basato su FTP (modello Coggan 6 zone)\nIntervallo configurabile",
-        "es": "Poll Zwift API para datos de viaje en vivo (poder, corazón, cadencia, velocidad, distancia, altitud, escalada)\nDatos de perfil Zwift (FTP, peso, altura, nivel, estadísticas totales)\nCálculo de la zona de energía basado en FTP (modelo de 6 zonas de Coggan)\nIntervalo de votación configurable",
-        "pl": "Polil Zwift API dla danych z jazdy na żywo (moc, karawan, kadencja, prędkość, odległość, wysokość, wspinaczka)\nDane profilu Zwift (FTP, waga, wysokość, poziom, całkowite statystyki)\nObliczanie strefy energetycznej oparte na FTP (model strefy Coggan 6)\nKonfigurowalny interwał wyborczy",
-        "uk": "Poll Zwift API для живих даних проїзду (потужність, серцетат, швидкість, відстань, висота, скелелазіння)\nДані профілю Zwift (FTP, вага, висота, рівень, загальна статистика)\nРозрахунок зони живлення на основі моделі FTP (Coggan 6-зону)\nКонфігурація інтервалу опитування",
-        "zh-cn": "Poll Zwift API用于实时乘车数据(功率,心率,cadence,速度,距离,高度,攀登)\nZwift 剖面图数据( FTP, 重量, 高度, 水平, 总数据)\n基于FTP(Coggan 6区模型)的电源区计算\n可配置的投票间隔"
-      },
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "uk": "Початкова версія",
-        "zh-cn": "首次出版"
+        "en": "Initial release: Poll Zwift API for live ride data, profile data, power zones",
+        "de": "Erstveröffentlichung: Zwift API für Live-Ride-Daten, Profildaten, Leistungszonen",
+        "ru": "Первый выпуск: опрос Zwift API для данных поездки, профиля, зон мощности",
+        "pt": "Lançamento inicial: Poll Zwift API para dados de passeio, perfil, zonas de potência",
+        "nl": "Eerste release: Poll Zwift API voor ritgegevens, profielgegevens, vermogenszones",
+        "fr": "Première version: API Zwift pour données de trajet, profil, zones de puissance",
+        "it": "Prima versione: Poll Zwift API per dati corsa, profilo, zone di potenza",
+        "es": "Primera versión: Poll Zwift API para datos de viaje, perfil, zonas de potencia",
+        "pl": "Pierwsze wydanie: Poll Zwift API dla danych jazdy, profilu, stref mocy",
+        "uk": "Перший випуск: опитування Zwift API для даних поїздки, профілю, зон потужності",
+        "zh-cn": "首次发布：轮询 Zwift API 获取骑行数据、个人资料、功率区间"
       }
     },
     "titleLang": {
