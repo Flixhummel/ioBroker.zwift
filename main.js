@@ -212,11 +212,17 @@ class Zwift extends utils.Adapter {
 		if (this.ftp > 0) {
 			const pctFtp = (power / this.ftp) * 100;
 			let zone = 1;
-			if (pctFtp > 120) zone = 6;
-			else if (pctFtp > 105) zone = 5;
-			else if (pctFtp > 90) zone = 4;
-			else if (pctFtp > 75) zone = 3;
-			else if (pctFtp >= 55) zone = 2;
+			if (pctFtp > 120) {
+				zone = 6;
+			} else if (pctFtp > 105) {
+				zone = 5;
+			} else if (pctFtp > 90) {
+				zone = 4;
+			} else if (pctFtp > 75) {
+				zone = 3;
+			} else if (pctFtp >= 55) {
+				zone = 2;
+			}
 			await this.setStateAsync("powerZone", { val: zone, ack: true });
 		}
 		await this.setStateAsync("heartrate", { val: status.heartrate || 0, ack: true });
@@ -279,22 +285,43 @@ class Zwift extends utils.Adapter {
 		await this.setStateAsync("profile.totalTimeInMinutes", { val: profile.totalTimeInMinutes || 0, ack: true });
 		await this.setStateAsync("profile.totalWattHours", { val: profile.totalWattHours || 0, ack: true });
 		await this.setStateAsync("profile.ftp", { val: profile.ftp || 0, ack: true });
-		await this.setStateAsync("profile.totalExperiencePoints", { val: profile.totalExperiencePoints || 0, ack: true });
-		await this.setStateAsync("profile.targetExperiencePoints", { val: profile.targetExperiencePoints || 0, ack: true });
+		await this.setStateAsync("profile.totalExperiencePoints", {
+			val: profile.totalExperiencePoints || 0,
+			ack: true,
+		});
+		await this.setStateAsync("profile.targetExperiencePoints", {
+			val: profile.targetExperiencePoints || 0,
+			ack: true,
+		});
 		await this.setStateAsync("profile.achievementLevel", { val: profile.achievementLevel || 0, ack: true });
 		await this.setStateAsync("profile.totalGold", { val: profile.totalGold || 0, ack: true });
 		await this.setStateAsync("profile.totalInKomJersey", { val: profile.totalInKomJersey || 0, ack: true });
-		await this.setStateAsync("profile.totalInSprintersJersey", { val: profile.totalInSprintersJersey || 0, ack: true });
+		await this.setStateAsync("profile.totalInSprintersJersey", {
+			val: profile.totalInSprintersJersey || 0,
+			ack: true,
+		});
 		await this.setStateAsync("profile.totalInOrangeJersey", { val: profile.totalInOrangeJersey || 0, ack: true });
 		await this.setStateAsync("profile.runAchievementLevel", { val: profile.runAchievementLevel || 0, ack: true });
 		await this.setStateAsync("profile.totalRunDistance", { val: profile.totalRunDistance || 0, ack: true });
-		await this.setStateAsync("profile.totalRunTimeInMinutes", { val: profile.totalRunTimeInMinutes || 0, ack: true });
-		await this.setStateAsync("profile.totalRunExperiencePoints", { val: profile.totalRunExperiencePoints || 0, ack: true });
-		await this.setStateAsync("profile.targetRunExperiencePoints", { val: profile.targetRunExperiencePoints || 0, ack: true });
+		await this.setStateAsync("profile.totalRunTimeInMinutes", {
+			val: profile.totalRunTimeInMinutes || 0,
+			ack: true,
+		});
+		await this.setStateAsync("profile.totalRunExperiencePoints", {
+			val: profile.totalRunExperiencePoints || 0,
+			ack: true,
+		});
+		await this.setStateAsync("profile.targetRunExperiencePoints", {
+			val: profile.targetRunExperiencePoints || 0,
+			ack: true,
+		});
 		await this.setStateAsync("profile.totalRunCalories", { val: profile.totalRunCalories || 0, ack: true });
 		await this.setStateAsync("profile.streaksCurrentLength", { val: profile.streaksCurrentLength || 0, ack: true });
 		await this.setStateAsync("profile.streaksMaxLength", { val: profile.streaksMaxLength || 0, ack: true });
-		await this.setStateAsync("profile.streaksLastRideTimestamp", { val: profile.streaksLastRideTimestamp || "", ack: true });
+		await this.setStateAsync("profile.streaksLastRideTimestamp", {
+			val: profile.streaksLastRideTimestamp || "",
+			ack: true,
+		});
 		await this.setStateAsync("profile.currentActivityId", { val: profile.currentActivityId || 0, ack: true });
 		await this.setStateAsync("profile.powerSource", { val: profile.powerSource || 0, ack: true });
 	}
