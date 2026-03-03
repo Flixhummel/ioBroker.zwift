@@ -68,7 +68,7 @@ class Zwift extends utils.Adapter {
 			{ id: "calories", name: "Calories", type: "number", role: "value", unit: "kcal" },
 			{ id: "time", name: "Ride Time", type: "number", role: "value", unit: "s" },
 			{ id: "laps", name: "Laps Completed", type: "number", role: "value", unit: "" },
-			{ id: "progress", name: "Route Progress", type: "number", role: "value", unit: "%" },
+			{ id: "progress", name: "Route Progress", type: "number", role: "value", unit: "" },
 			{ id: "sport", name: "Sport Type", type: "number", role: "value", unit: "" },
 			{ id: "groupId", name: "Group/Event ID", type: "number", role: "value", unit: "" },
 			{ id: "x", name: "World Position X", type: "number", role: "value", unit: "" },
@@ -189,14 +189,14 @@ class Zwift extends utils.Adapter {
 
 		// Distance and elevation
 		await this.setStateAsync("distance", {
-			val: Math.round(((status.distance || 0) / 100000) * 100) / 100,
+			val: Math.round(((status.distance || 0) / 1000) * 100) / 100,
 			ack: true,
 		});
 		await this.setStateAsync("altitude", {
 			val: Math.round((((status.altitude || 9000) - 9000) / 2) * 0.3048 * 10) / 10,
 			ack: true,
 		});
-		await this.setStateAsync("climbing", { val: Math.round(((status.climbing || 0) / 100) * 10) / 10, ack: true });
+		await this.setStateAsync("climbing", { val: Math.round((status.climbing || 0) * 10) / 10, ack: true });
 
 		// Session data
 		await this.setStateAsync("calories", { val: status.calories || 0, ack: true });
