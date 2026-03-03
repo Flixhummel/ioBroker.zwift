@@ -168,7 +168,7 @@ With your Zwift data available as ioBroker states, you can create automations th
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.1.1 (2026-03-03)
 * Fix ESLint curly and prettier errors for CI
 
 ### 0.1.0 (2026-03-03)
