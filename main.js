@@ -181,6 +181,7 @@ class Zwift extends utils.Adapter {
 	 * @param {Record<string, any>} status
 	 */
 	async updateStates(status) {
+		this.log.debug(`Raw values - distance: ${status.distance}, climbing: ${status.climbing}, progress: ${status.progress}, calories: ${status.calories}`);
 		// Core performance metrics
 		await this.setStateAsync("power", { val: status.power || 0, ack: true });
 		await this.setStateAsync("heartrate", { val: status.heartrate || 0, ack: true });
