@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "zwift",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "news": {
+      "0.1.3": {
+        "en": "Add `gradient` state (current slope in %, computed from altitude/distance deltas with a 5 m threshold, clamped to ±50 %)",
+        "de": "Fügen Sie `gradient` Zustand (aktuelle Steigung in %, berechnet aus Höhen/Abstand Deltas mit einer 5 m Schwelle, eingespannt auf ±50 %)",
+        "ru": "Добавить \"градиентное\" состояние (текущий уклон в %, рассчитанный из дельты высоты/расстояния с порогом 5 м, зажатый до ±50 %)",
+        "pt": "Adicionar estado de «gradiente» (deslocamento actual em %, calculado a partir de deltas de altitude/distância com um limiar de 5 m, fixado a ±50 %)",
+        "nl": "Toevoegen van de status \"gradient\" (stroomhelling in %, berekend vanaf hoogte/afstandsdelta's met een drempel van 5 m, geklemd tot ±50 %)",
+        "fr": "Ajouter l'état \"gradient\" (pente courante en %, calculée à partir de deltas d'altitude/distance avec un seuil de 5 m, serré à ±50 %)",
+        "it": "Aggiungi `gradient` stato (corrente pendenza in %, calcolato da altitudine/distanza delta con una soglia di 5 m, fissato a ±50 %)",
+        "es": "Añada el estado de `gradiente' ( pendiente corriente en %, computado a partir de deltas de altitud/distancia con un umbral de 5 m, sujetado a ±50 %)",
+        "pl": "Dodać stan gradientu (obecne nachylenie w%, obliczone z wysokości / odległości z progiem 5 m, zaciśnięte do ± 50%)",
+        "uk": "Додати стан `градієнту (поточний схил у %, складений з висоти/глибинності дельта з пороєм 5 м, зафіксовано до ± 50 %)",
+        "zh-cn": "添加 \" 梯度 \" 状态(目前坡度%,按5米阈值的海拔/三角洲计算,夹到±50%)"
+      },
       "0.1.2": {
         "en": "Set up trusted publishing via OIDC for GitHub Actions deploy",
         "de": "Aufbau eines vertrauenswürdigen Publizierens über OIDC für GitHub Actions",
