@@ -170,6 +170,7 @@ With your Zwift data available as ioBroker states, you can create automations th
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* Add `gradient` state (current slope in %, computed from altitude/distance deltas with a 5 m threshold, clamped to ±50 %)
 
 ### 0.1.2 (2026-03-03)
 * Set up trusted publishing via OIDC for GitHub Actions deploy
