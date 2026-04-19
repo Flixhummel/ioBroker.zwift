@@ -47,6 +47,7 @@ Polls the Zwift API for live workout data and makes it available as ioBroker sta
 | `distance` | km | Distance covered in current activity |
 | `altitude` | m | Current altitude |
 | `climbing` | m | Total elevation gain in current activity |
+| `gradient` | % | Current gradient/slope (positive = uphill, negative = downhill) |
 | `calories` | kJ | Calories burned (matches Zwift in-game display) |
 | `time` | s | Elapsed ride time |
 | `laps` | — | Laps completed |

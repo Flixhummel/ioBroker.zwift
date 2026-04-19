@@ -25,6 +25,10 @@ class Zwift extends utils.Adapter {
 		this.retryTimeout = null;
 		this.retryDelay = INITIAL_RETRY_DELAY;
 		this.ftp = 0;
+		/** @type {number | null} */
+		this.prevAltitude = null;
+		/** @type {number | null} */
+		this.prevDistance = null;
 	}
 
 	async onReady() {
@@ -99,6 +103,7 @@ class Zwift extends utils.Adapter {
 			{ id: "distance", name: "Distance", type: "number", role: "value.distance", unit: "km" },
 			{ id: "altitude", name: "Altitude", type: "number", role: "value.gps.elevation", unit: "m" },
 			{ id: "climbing", name: "Total Climbing", type: "number", role: "value", unit: "m" },
+			{ id: "gradient", name: "Current Gradient", type: "number", role: "value.incline", unit: "%" },
 			{ id: "calories", name: "Calories", type: "number", role: "value", unit: "kJ" },
 			{ id: "time", name: "Ride Time", type: "number", role: "value", unit: "s" },
 			{ id: "laps", name: "Laps Completed", type: "number", role: "value", unit: "" },
@@ -220,6 +225,8 @@ class Zwift extends utils.Adapter {
 				await this.setStateAsync("info.connection", true, true);
 			} else {
 				await this.setStateAsync("isRiding", false, true);
+				this.prevAltitude = null;
+				this.prevDistance = null;
 			}
 		} catch (error) {
 			this.log.warn(`Polling failed: ${error.message}`);
@@ -257,15 +264,33 @@ class Zwift extends utils.Adapter {
 		await this.setStateAsync("speed", { val: Math.round(((status.speed || 0) / 1000000) * 10) / 10, ack: true });
 
 		// Distance and elevation
-		await this.setStateAsync("distance", {
-			val: Math.round(((status.distance || 0) / 1000) * 100) / 100,
-			ack: true,
-		});
-		await this.setStateAsync("altitude", {
-			val: Math.round((((status.altitude || 9000) - 9000) / 2) * 0.3048 * 10) / 10,
-			ack: true,
-		});
+		const distKm = Math.round(((status.distance || 0) / 1000) * 100) / 100;
+		const altM = Math.round((((status.altitude || 9000) - 9000) / 2) * 0.3048 * 10) / 10;
+		await this.setStateAsync("distance", { val: distKm, ack: true });
+		await this.setStateAsync("altitude", { val: altM, ack: true });
 		await this.setStateAsync("climbing", { val: Math.round((status.climbing || 0) * 10) / 10, ack: true });
+
+		// Gradient: Δaltitude_m / Δdistance_m × 100
+		let gradient = 0;
+		if (this.prevAltitude !== null && this.prevDistance !== null) {
+			const deltaDistM = (distKm - this.prevDistance) * 1000;
+			if (deltaDistM >= 5) {
+				const deltaAlt = altM - this.prevAltitude;
+				gradient = Math.round((deltaAlt / deltaDistM) * 100 * 10) / 10;
+				gradient = Math.max(-50, Math.min(50, gradient));
+				this.prevAltitude = altM;
+				this.prevDistance = distKm;
+			} else if (deltaDistM < 0) {
+				// New activity / distance reset — rebase without emitting a spike
+				this.prevAltitude = altM;
+				this.prevDistance = distKm;
+			}
+			// 0 ≤ deltaDistM < 5m → pause/standstill, keep prev values
+		} else {
+			this.prevAltitude = altM;
+			this.prevDistance = distKm;
+		}
+		await this.setStateAsync("gradient", { val: gradient, ack: true });
 
 		// Session data
 		await this.setStateAsync("calories", { val: status.calories || 0, ack: true });
