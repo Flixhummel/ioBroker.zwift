@@ -169,6 +169,9 @@ With your Zwift data available as ioBroker states, you can create automations th
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
 ### 0.1.3 (2026-04-19)
 * Add `gradient` state (current slope in %, computed from altitude/distance deltas with a 5 m threshold, clamped to ±50 %)
 
