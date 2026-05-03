@@ -187,6 +187,8 @@ With your Zwift data available as ioBroker states, you can create automations th
 ### 0.0.1 (2026-03-02)
 * (Flixhummel) initial release
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 MIT License
 
