@@ -165,6 +165,9 @@ With your Zwift data available as ioBroker states, you can create automations th
 - Send a message to your family's smart speaker: "Dad is Zwifting, estimated finish in X minutes"
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+- (iobroker-bot) Adapter requires node.js >= 22 now.
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
